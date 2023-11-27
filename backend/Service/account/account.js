@@ -13,7 +13,7 @@ async function Create(Request){
 
     const result = await (new Query).Insert('users',
         ['username', 'email', 'password', 'token', 'refreshtoken', 'verifyemail_token', 'forgotpassword_token','role'],
-        [Request.username, Request.email,await Protect.Hash(Request.password), 'auth_token', 'refresh_token', null, null,'user']
+        [Request.username, Request.email,await Protect.Hash(Request.password), 'access_token', 'refresh_token', null, null,'user']
     );
     response.Result(result);
 
