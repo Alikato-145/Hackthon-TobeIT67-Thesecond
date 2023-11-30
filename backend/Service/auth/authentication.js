@@ -6,8 +6,9 @@ require('dotenv').config();
 
 async function Login(Request){
     const response = new Response();
-    
-    const user = await (new Query).Select('id','username','password','email','created_date','token','refreshtoken').From('users').Where('username=$1',Request.username).Execute(0);
+    await Protect.Validate(Request,['username','password'])
+
+    const user = await (new Query).Select('id','username','password','email','created_date','token','refreshtoken','role').From('users').Where('username=$1',Request.username).Execute(0);
 
     if(user && await Protect.HashCompare(Request.password,user.password)){
         const refreshToken = jwt.sign({ id: user.id, email: user.email }, process.env.REFRESH_TOKEN_KEY, { expiresIn: process.env.REFRESH_TOKEN_TIME});
@@ -21,7 +22,7 @@ async function Login(Request){
 
         user.refreshToken = refreshToken;
         user.token = acessToken;
-        const result = NewObj(user,['id','username','email','created_date','token','refreshToken'])
+        const result = NewObj(user,['id','username','email','created_date','token','refreshToken','role'])
 
         response.Result(result);
     }else{
