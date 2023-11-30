@@ -79,8 +79,8 @@ async function ValidateEmail(email) {
 
 async function ValidateUsername(username) {
     if(!username) throw new Error('Invalid Username');
-    if (username.length < 8) {
-        throw new Error('Invalid Username');
+    if (username.length < 8 || username.length > 20) {
+        throw new Error('Invalid Username (8-20)');
     }
 
     let hasLowercase = false;
@@ -111,7 +111,7 @@ async function ValidateUsername(username) {
 async function ValidatePassword(password) {
     if(!password) throw new Error('Invalid Password');
     if (password.length < 8) {
-        throw new Error('Invalid Password');
+        throw new Error('Invalid Password (At least 8 characters)');
     }
 
     let hasLowercase = false;
@@ -175,6 +175,11 @@ async function ValidateRole(bool){
     return true;
 }
 
+async function ValidatePhone(number) {
+    var phoneRegex = /^[0-9]{10}$/;
+    if(!phoneRegex.test(number)) throw new Error("Invalid Phone")
+}
+
 module.exports = {
     Hash,
     HashCompare,
@@ -186,4 +191,5 @@ module.exports = {
     ValidateObj,
     Validate,
     ValidateRole,
+    ValidatePhone
 }

@@ -5,15 +5,18 @@ const Protect = require('../../Core/Protect');
 async function Create(Request){
     const response = new Response();
 
-    await Protect.ValidateEmail(Request.email);
-    await Protect.DuplicateCheck('users','email',Request.email);
+    await Protect.Validate(Request,['username','password','email','phone'])
+
     await Protect.ValidateUsername(Request.username);
-    await Protect.DuplicateCheck('users','username',Request.username);
     await Protect.ValidatePassword(Request.password);
+    await Protect.ValidateEmail(Request.email);
+    await Protect.ValidatePhone(Request.phone);
+    await Protect.DuplicateCheck('users','username',Request.username);
+    await Protect.DuplicateCheck('users','email',Request.email);
 
     const result = await (new Query).Insert('users',
-        ['username', 'email', 'password', 'token', 'refreshtoken', 'verifyemail_token', 'forgotpassword_token','role'],
-        [Request.username, Request.email,await Protect.Hash(Request.password), 'access_token', 'refresh_token', null, null,'user']
+        ['username', 'email', 'password', 'token', 'refreshtoken', 'verifyemail_token', 'forgotpassword_token','role','phone'],
+        [Request.username, Request.email,await Protect.Hash(Request.password), 'access_token', 'refresh_token', null, null,'user',Request.phone]
     );
     response.Result(result);
 
