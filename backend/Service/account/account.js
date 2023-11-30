@@ -13,6 +13,7 @@ async function Create(Request){
     await Protect.ValidatePhone(Request.phone);
     await Protect.DuplicateCheck('users','username',Request.username);
     await Protect.DuplicateCheck('users','email',Request.email);
+    await Protect.DuplicateCheck('users','phone',Request.phone);
 
     const result = await (new Query).Insert('users',
         ['username', 'email', 'password', 'token', 'refreshtoken', 'verifyemail_token', 'forgotpassword_token','role','phone'],
