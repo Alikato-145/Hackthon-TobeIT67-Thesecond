@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=prompt:wght@300&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'prompt', sans-serif;
+    background: url(/frontend/img/background.png), lightgray 50% / cover no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+main{
+    margin: 30px;
+    padding: 20px;
+    
+}
+
+nav{
+    height: 95px;
+    background-color: #262952cb;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0px;
+    padding: 0px 20px;
+}
+
+a{
+    color: #000;
+    text-decoration: none;
+}
+
+.btn{
+    color: #fff;
+    background-color: #D54873;
+    font-size: 32px;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* **************************************** */
+.login{
+    background:none;
+    border: solid 1px #D54873;
+}
+
+
+
+/* *************************************** */
+.intro{
+    display: flex;
+    align-items: center;
+    justify-content:space-evenly;
+    padding: 10px;
+    height: 950px;
+}
+
+.col{
+    display: flex;
+    flex-direction: column ;
+    align-items: center;
+    justify-content: center;
+}
+
+.intro-text{
+    color: #fff;
+    width: 840px;
+}
+
+.intro-logo{
+    width: 500px;
+}
+
+.introBtn{
+    width: 350px;
+    padding: 10px;
+    text-align: center;
+}
+
+/* *************************************** */
+
+.btn:hover{
+    background-color: #E27C9B;
+    border: none;
+    transition: 0.1s ease-out;
+}
