@@ -5,6 +5,8 @@ const axios = require('axios');
 const ACL = require('../Core/ACL');
 const multer = require('multer');
 const multerCall = multer();
+const nodemailer = require('nodemailer');
+
 require('dotenv').config()
 
 // firebase
@@ -24,8 +26,10 @@ const serviceAccount = {
 
 const FirebaseApp = admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
+    storageBucket: 'gs://imagestorage-afd63.appspot.com',
 });
 
+const bucket = admin.storage().bucket();
 const FirebaseStorage = FirebaseApp.storage();
 
 // class
@@ -53,7 +57,7 @@ class Response{
     }
     async Result(res){
         if(!this.disabled){
-            if(res.err){
+            if(res && res.err){
                 this.error_message.push(res);
                 this.success = false;
                 this.status = 500;
@@ -242,27 +246,69 @@ async function jwtDecode(req){
 
 // storage core
 async function FileUpload(file) {
-    console.log(file)
-    if(!file) return {err:'file upload',message:"File missing"};
-    const fileURLs = [];
-    file.map(async (f) => {
-        const storageFile = FirebaseStorage.bucket('gs://imagestorage-afd63.appspot.com').file(`image/${uuidv4()}`);
-        const fileStream = storageFile.createWriteStream({
-            resumable: false,
-            contentType: f.mimetype,
-        })
+    // console.log(file)
+    // if(!file) return {err:'file upload',message:"File missing"};
+    // const fileURLs = [];
+    // file.map(async (f) => {
+    //     const storageFile = FirebaseStorage.bucket('gs://imagestorage-afd63.appspot.com').file(`image/${uuidv4()}`);
+    //     const fileStream = storageFile.createWriteStream({
+    //         resumable: false,
+    //         contentType: f.mimetype,
+    //     })
 
-        fileStream.on('finish', async () => {
-            await storageFile.getSignedUrl({
-                action: 'read',
-                expires: '-03-09-9999',
-            }).then(share_url => {
-                fileURLs.push(share_url);
-            })
-        });
-        fileStream.end(f.buffer);
-    })
-    console.log(fileURLs)
+    //     fileStream.on('finish', async () => {
+    //         await storageFile.getSignedUrl({
+    //             action: 'read',
+    //             expires: '-03-09-9999',
+    //         }).then(share_url => {
+    //             fileURLs.push(share_url);
+    //         })
+    //     });
+    //     fileStream.end(f.buffer);
+    // })
+    // console.log(fileURLs)
+
+
+    // const storageRef = FirebaseStorage.bucket(`gs://imagestorage-afd63.appspot.com`);
+      
+    // return await storageRef.upload(file[0].buffer, {
+    //   public: true,
+    //   destination: `image/${file[0].originalname}`,
+    //   metadata: {
+    //     firebaseStorageDownloadTokens: uuidv4(),
+    //   }
+    // }).then(res => {
+    //   console.log(res[0].metadata.mediaLink,"LINK DEBUG")
+    // }).catch(err => {
+    //   console.log(err);
+    //   return 'Err';
+    // });
+    
+    const bucketName = 'gs://imagestorage-afd63.appspot.com';
+    const destinationPath = `images/${file[0].originalname}`;
+    
+    const bucket = FirebaseStorage.bucket(bucketName);
+    const file_ = bucket.file(destinationPath);
+    
+    const bufferData = file[0].buffer;
+    
+    const stream = file_.createWriteStream({
+      metadata: {
+        contentType: 'image/png', 
+      },
+    });
+    
+    stream.on('error', (err) => {
+      console.error(err);
+      return 'Err';
+    });
+    
+    stream.on('finish', () => {
+      console.log(`File ${destinationPath} uploaded successfully`);
+    });
+    
+    stream.end(bufferData);    
+
 }
 // log
 async function Log(msg){
@@ -310,6 +356,29 @@ async function RefCheck(value_to_check,from_table,condition,condition_value,isAr
     }
 }
 
+async function SendMail(to,subject,content){
+    let transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 587,
+        secure: false,
+        auth: {
+          user: process.env['email'],
+          pass: process.env['password']
+        }
+       });
+
+       await transporter.sendMail({
+       from: process.env['email'],
+       to: to,
+       subject: subject,
+       text: content,
+       }).catch(err=>{
+        if(err) throw new Error('Failed to send email')
+       })
+    return `The password reset token has been sent to ${to}`
+       
+}
+
 module.exports = {
     Response,
     Query,
@@ -321,5 +390,6 @@ module.exports = {
     GetDateTime,
     c,
     multerCall,
-    RefCheck
+    RefCheck,
+    SendMail
 };

@@ -39,6 +39,15 @@ router.patch('/delete/:id?',Authorize,async (req,res)=>{
     Response(req,res,result);
 });
 
+router.post('/forgot-password',async (req , res) => {
+    const result = await Service.ForgotPassword(req.body).catch(e=>Helper.c(e));
+    Response(req,res,result);
+})
+router.patch('/reset-password-with-token',async (req , res) => {
+    const result = await Service.ResetPasswordWithToken(req.body).catch(e=>Helper.c(e));
+    Response(req,res,result);
+})
+
 router.post('/validateTest',Authorize,EmailVeriy,async (req , res) => {
     const result = await Service.validateTest(req.body).catch(e=>Helper.c(e));
     Response(req,res,result);
