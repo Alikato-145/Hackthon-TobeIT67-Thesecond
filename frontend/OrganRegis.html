@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Sonatasphere | Register Page</title>
+</head>
+
+<body>
+    <nav>
+        <a href="index.html"><img src="img/LOGO.png" alt="logo" class="logo"></a>
+        <div class="groupBtn">
+            <a href="index.html" class="btn register">ย้อนกลับ</a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="regis-main" style="height: 1030px;">
+                <h1>สมัครเป็นผู้จัดงาน</h1>
+                <form action="#" method="post"
+                    id="register" >
+
+
+                    <div style="display: flex; width: 680px;">
+
+                        <div class="inputGroup">
+                            <label for="nameTitle">คำนำหน้า <span style="color:#D54873;">*</span></label>
+                            <select id="nameTitle" name="nameTitle" style="height: 75px;">
+                                <option value="">--คำนำหน้า--</option>
+                                <option value="นาย">นาย</option>
+                                <option value="นาง">นาง</option>
+                                <option value="นางสาว">นางสาว</option>
+                            </select>
+                        </div>
+                        <div class="inputGroup" style="margin-left: 10px;">
+                            <label for="name">ชื่อ - นานมสกุล <span style="color:#D54873;">*</span></label>
+                            <input type="text" name="name" id="name" placeholder="firstname and lastname"
+                            style="width: 440px;" required>
+                        </div>
+                        
+
+
+                    </div>
+
+                    <div style="display: flex; width: 680px;">
+
+                        <div class="inputGroup">
+                            <label for="CradID">เลขบัตรประชาชน <span style="color:#D54873;">*</span></label>
+                            <input type="text" name="CradID" id="CradID" placeholder="x-xxxx-xxxx-xx-x"
+                            style="width: 220px;" required>
+                        </div>
+
+                        <div class="inputGroup">
+                            <label for="birthdate">วัน/เดือน/ปี เกิด <span style="color:#D54873;">*</span></label>
+                            <input type="date" name="birthdate" id="birthdate" placeholder="name"
+                            style="width: 210px;" onchange="calculateAge()" required>
+                        </div>
+
+                        <div class="inputGroup">
+                            <label for="age">อายุ <span style="color:#D54873;">*</span></label>
+                            <input type="text" name="age" id="age" placeholder="00-99"
+                            style="width: 120px;" required>
+                        </div>
+
+
+                        
+
+
+                    </div>
+
+                    <div style="display: flex; align-items: center; justify-content: center; width: 680px;">
+
+                        <div class="inputGroup" style="display: flex; align-items: center; justify-content: center;">
+                            <label style="display: flex; align-items: center; justify-content: center;">รูปถ่ายบัตรประชาชนพร้อมใบหน้า <span style="color:#D54873;">*</span></label>
+                            <input type="file" id="CardAndface" class="custom-file-input">
+                            <label for="CardAndface" class="custom-file-label">+<span>upload</span></label>
+                        </div>
+
+
+
+                        
+
+
+                    </div>
+
+                    <div style="display: flex; align-items: center; justify-content: center; width: 680px;">
+
+                        <div class="inputGroup" style="display: flex; align-items: center; justify-content: center;">
+                            <label style="display: flex; align-items: center; justify-content: center;">สำเนาบัตรประชาชนและสำเนาทะเบียนบ้าน <span style="color:#D54873;">*</span></label>
+                            <input type="file" id="fileHouseCard" class="custom-file-input">
+                            <label for="fileHouseCard" class="custom-file-label">+<span>upload</span></label>
+                        </div>
+
+
+
+                        
+
+
+                    </div>
+                
+
+                    <br>
+                    <button type="submit">สมัครสมาชิก</button>
+                </form>
+            </div>
+        </div>
+
+
+    </main>
+</body>
+
+</html>
