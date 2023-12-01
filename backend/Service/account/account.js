@@ -1,6 +1,8 @@
 // Core
-const {Response,Query,Permission,GetDateTime} = require('../../Core/Helper');
+const {Response,Query,Permission,GetDateTime,SendMail} = require('../../Core/Helper');
 const Protect = require('../../Core/Protect');
+const { v4: uuidv4 } = require('uuid');
+const jwt = require('jsonwebtoken');
 
 async function Create(Request){
     const response = new Response();
@@ -109,11 +111,45 @@ async function Delete(Request){
     return response.Stack();
 }
 
+async function ForgotPassword(Request){
+    const response = new Response();
+
+    await Protect.Validate(Request,['email'])
+    await Protect.ValidateEmail(Request.email);
+    
+    const token = jwt.sign({email:Request.email},process.env['reset_password_token'],{ expiresIn: process.env.TOKEN_TIME });
+
+    const result = await SendMail(Request.email,'Reset-Password',`Your reset password token is: ${token}`)
+
+    response.Result(result);
+    return response.Stack();
+}
+
+async function ResetPasswordWithToken(Request){
+    const response = new Response();
+
+    await Protect.Validate(Request,['token','password'])
+
+    const decoded = jwt.verify(Request.token, process.env['reset_password_token'])
+    const user = await (new Query()).Select('id', 'password').From('users').Where('email=$1', decoded.email).Execute(0);
+
+    if (user) {
+        const result = await (new Query()).UpdateColumn('users', 'password', await Protect.Hash(Request.password), 'email', decoded.email);
+        response.Result(result);
+    } else {
+        throw new Error('fail to reset password (account not found or no any account use this email)');
+    }
+    return response.Stack();
+
+}
+
 module.exports = {
     Create,
     validateTest,
     ReadAll,
     Read,
     Update,
-    Delete
+    Delete,
+    ForgotPassword,
+    ResetPasswordWithToken,
 }
