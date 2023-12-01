@@ -49,6 +49,7 @@ app.use((err,req,res,next)=>{
 // controller '/api/folder' (/folder/file)
 app.use('/api/auth',require('./auth/authentication'));
 app.use('/api/account',require('./account/account'));
+app.use('/api/role/register',require('./account/register'));
 app.use('/api/file',require('./storage/file'));
 // run
 app.get('/api',async (req,res)=>{res.send(listEndpoints(app));})
