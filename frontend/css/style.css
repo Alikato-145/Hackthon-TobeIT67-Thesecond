@@ -44,6 +44,10 @@ a{
     cursor: pointer;
 }
 
+.btnDis{
+    background-color: #c2c2c2;
+}
+
 input{
     border: 0;
     border-radius: 20px;
@@ -137,6 +141,10 @@ input{
     border: none;
     transition: 0.1s ease-out;
     color: #fff;
+}
+
+.btnDis:hover{
+    background-color: #c2c2c2;
 }
 
 input:focus{
