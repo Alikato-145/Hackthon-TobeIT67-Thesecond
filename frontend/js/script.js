@@ -1,4 +1,4 @@
-import {API} from '../config.json';
+
 alert('test')
 function sendEmail() {
    const emailValue = document.getElementById("emailReset").value;
