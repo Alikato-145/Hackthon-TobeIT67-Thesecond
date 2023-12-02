@@ -50,7 +50,9 @@ app.use((err,req,res,next)=>{
 app.use('/api/auth',require('./auth/authentication'));
 app.use('/api/account',require('./account/account'));
 app.use('/api/role/register',require('./account/register'));
+app.use('/api/place',require('./place/place'));
 app.use('/api/file',require('./storage/file'));
+
 // run
 app.get('/api',async (req,res)=>{res.send(listEndpoints(app));})
 process.env.DOCUMENT=='true'?app.get('/apis',async (req,res)=>{res.render('doc.ejs');}):null

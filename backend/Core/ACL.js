@@ -16,6 +16,17 @@ Permission.user = {
     Delete: true,
     lv:1,
 };
+
+Permission.organize = {
+    ...Permission.user,
+    CreatePlace: true,
+    DeletePlace:true,
+}
+
+Permission.artist = {
+    ...Permission.user,
+}
+
 Permission.staff = {
     ...Permission.user,
     ReadAll: true,

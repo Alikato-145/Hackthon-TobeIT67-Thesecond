@@ -132,6 +132,7 @@ class Query{
             const result = await connection.query(query, values);
             return result.rows;
         } catch (err) {
+            console.log(err);
             return { err: 'database insert', message: err };
         } finally {
             if (connection) {
