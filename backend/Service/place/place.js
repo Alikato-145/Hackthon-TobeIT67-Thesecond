@@ -20,6 +20,24 @@ async function Create(Request){
     return response.Stack();
 }
 
+async function Reserve(Request){
+    const response = new Response();
+
+    await Protect.Validate(Request,['place_id'])
+
+    const updateModel = {
+        reserve: true,
+        artist_id: Request.user.id,
+        update_date: GetDateTime(),
+        update_by: Request.user.id
+    }
+
+    const result = await (new Query).UpdateColumns('place',updateModel,'id',Request.place_id);
+    response.Result(result);
+
+    return response.Stack();
+}
+
 async function Read(Request){
     const response = new Response();
 
@@ -44,22 +62,8 @@ async function Update(Request){
 async function Delete(Request){
     const response = new Response();
     await Protect.ValidateRole(await Permission(Request.user,'Delete'));
-    Request.search_id ? await Protect.ValidateRole(await Permission(Request.user,'DeleteAll')):null;
 
-    const updateModel = {
-        isactive: false,
-        isdelete: true,
-        token: null,
-        refreshtoken: null,
-        username: 'd',
-        email: 'd',
-        password: 'd',
-        verifyemail_token: null,
-        forgotpassword_token: null,
-        delete_date: GetDateTime(),
-        delete_by: Request.user.id
-    }
-    const result = await new Query().UpdateColumns('place',updateModel,'id',Request.search_id?Request.search_id:Request.user.id);
+    const result = "no time to code!"
     response.Result(result);
 
     return response.Stack();
@@ -67,6 +71,7 @@ async function Delete(Request){
 
 module.exports = {
     Create,
+    Reserve,
     Read,
     Update,
     Delete,

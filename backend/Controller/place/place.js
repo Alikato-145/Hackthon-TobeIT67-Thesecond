@@ -22,6 +22,11 @@ router.post('/create',Authorize,async (req , res) => {
     Response(req,res,result);
 })
 
+router.patch('/reserve-approve',Authorize,async (req , res) => {
+    const result = await Service.Reserve(req.body).catch(e=>Helper.c(e));
+    Response(req,res,result);
+})
+
 router.put('/update',Authorize,async (req,res)=>{
     const result = await Service.Update(req.body).catch(e=>Helper.c(e));
     Response(req,res,result);
