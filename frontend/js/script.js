@@ -1,4 +1,4 @@
-alert('test')
+
 function sendEmail() {
    const emailValue = document.getElementById("emailReset").value;
    const btn = document.getElementById("SendToken")
