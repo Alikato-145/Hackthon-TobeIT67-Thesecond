@@ -1,4 +1,3 @@
-
 alert('test')
 function sendEmail() {
    const emailValue = document.getElementById("emailReset").value;
