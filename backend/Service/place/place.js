@@ -24,9 +24,9 @@ async function Read(Request){
     const response = new Response();
 
     await Protect.ValidateRole(await Permission(Request.user,'Read'));
-    Request.search_id ? await Protect.ValidateRole(await Permission(Request.user,'ReadOther')):null;
+    // Request.search_id ? await Protect.ValidateRole(await Permission(Request.user,'ReadOther')):null;
 
-    const result = await (new Query).Select('id','username','email','role','verify').From('users').Where('id=$1',Request.search_id?Request.search_id:Request.user.id).Execute();
+    const result = Request.search_id ? await (new Query).Select('id','name','time','benefit','wage_rate','description','need_sound_engineer','rush','owner_name','reserve').From('place').Where('id=$1',Request.search_id).Execute():await (new Query).Select('id','name','time','benefit','wage_rate','description','need_sound_engineer','rush','owner_name','reserve').From('place').Execute()
     response.Result(result);
 
     return response.Stack();
