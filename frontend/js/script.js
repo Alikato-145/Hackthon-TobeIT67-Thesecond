@@ -1,8 +1,10 @@
+import {API} from '../config.json';
+alert('test')
 function sendEmail() {
    const emailValue = document.getElementById("emailReset").value;
    const btn = document.getElementById("SendToken")
    // ส่วนนี้คือการทำ HTTP request ไปยัง API โดยใช้ fetch
-   fetch('https://backend-deploy-theta-sand.vercel.app/api/account/forgot-password', {
+   fetch(`${API}api/account/forgot-password`, {
        method: 'POST',
        headers: {
            'Content-Type': 'application/json', // ระบุว่าข้อมูลที่ส่งไปเป็น JSON

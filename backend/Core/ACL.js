@@ -25,7 +25,7 @@ Permission.organize = {
 
 Permission.artist = {
     ...Permission.user,
-    reserve: true,
+    Reserve: true,
 }
 
 Permission.staff = {
