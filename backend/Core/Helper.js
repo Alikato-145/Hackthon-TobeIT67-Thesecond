@@ -215,6 +215,7 @@ class Query{
             if(result.rowCount>0) return result.rowCount;
             return {err:'Not found'};
         } catch (err) {
+            console.log(err)
             return { err: 'database execute -UpdateColums', message: err };
         } finally {
             if (connection) {

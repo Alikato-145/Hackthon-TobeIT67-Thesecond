@@ -54,7 +54,7 @@ async function ReadOrganize(Request){
 async function Update(Request){
     const response = new Response();
 
-    await Protect.Validate(Request,['prefix','fullname','age','birthday','id_card','role','band','genre','position'])
+    await Protect.Validate(Request,['prefix','fullname','age','birthday','id_card','role','band','genre','position','address','instrument'])
     await Protect.ValidateIdCard(Request.id_card);
 
     const roleMasterData = ['artist','organize']
@@ -72,7 +72,9 @@ async function Update(Request){
         id_card: Request.id_card,
         band: Request.band,
         genre: `[${Request.genre}]`,
-        position: `[${Request.position}]`
+        position: `[${Request.position}]`,
+        address: Request.address,
+        instrument: `[${Request.instrument}]`
     }
 
     const result = await (new Query).UpdateColumns(Request.role,updateModel,'user_id',Request.user.id);
