@@ -5,16 +5,31 @@ body {
     padding: 0;
     box-sizing: border-box;
     font-family: 'prompt', sans-serif;
-    font-size: 24px;
-    background: url(/frontend/img/background.png), lightgray 50% / cover no-repeat;
+    font-size: 18px;
+    background: url(../img/background.png), lightgray 50% / cover no-repeat;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     height: 100vh;
 }
 
+.logo{
+    width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 main{
     padding: 20px;
+}
+
+header{
+    background: url(/frontend/img/background.png), lightgray 50% / cover no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
 }
 
 nav{
@@ -38,7 +53,7 @@ a{
     font-family: 'prompt', sans-serif;
     background-color: #D54873;
     border: 0;
-    font-size: 32px;
+    font-size: 26px;
     border-radius: 60px;
     padding: 10px;
     cursor: pointer;
@@ -51,9 +66,9 @@ a{
 input, select{
     border: 0;
     border-radius: 20px;
-    height: 30px;
-    padding: 10px;
-    font-size: 24px;
+    height: 10px;
+    padding: 5px;
+    font-size: px;
     font-family: 'prompt', sans-serif;
 }
 
@@ -72,11 +87,11 @@ input, select{
 
 /* *************************************** */
 .intro{
+    margin-top: 10px;
     display: flex;
     align-items: center;
     justify-content:space-evenly;
     padding: 10px;
-    height: 950px;
 }
 
 .col{
@@ -92,7 +107,9 @@ input, select{
 }
 
 .intro-logo{
-    width: 500px;
+    width: 550px;
+    background-color: #D54873;
+    padding: 5px;
 }
 
 .introBtn{
@@ -104,8 +121,8 @@ input, select{
 /* *************************************** */
 
 .regis-main{
-    width: 800px;
-    height: 965px;
+    width: 750px;
+    height: 760px;
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.9);
     display: flex;
@@ -117,7 +134,7 @@ input, select{
 .inputGroup{
     display: flex;
     flex-direction: column;
-    margin: 10px;
+    margin: 5px;
 }
 
 .inputGroup input{
@@ -147,8 +164,8 @@ input, select{
   }
   
   .custom-file-label {
-      width: 325px;
-      height: 160px;
+      width: 300px;
+      height: 120px;
     font-size: 1em;
     padding: 10px 15px;
     background-color: #D9D9D9;
@@ -160,6 +177,49 @@ input, select{
     align-items: center;
     justify-content: center;
   }
+
+/* *************************************** */
+.noti, .profile{
+    background: none;
+}
+
+.noti img, .profile img{
+    width: 32px;
+}
+
+#searchBar img{
+    width: 32px;
+    display: flex;
+    margin-right: 10px;
+}
+
+#searchBar{
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+}
+
+.searchBarFocus{
+    border:solid 1px #D54873;
+}
+
+#search{
+    background: none;
+    width: 820px;
+    padding: 10px;
+}
+
+.filterBar{
+    background-color: #c2c2c2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 10px;
+}
+
 
 /* *************************************** */
 .btn:hover, button:hover{
@@ -180,4 +240,12 @@ input:focus, select:focus{
 
 a:hover{
     color:#E27C9B;
+}
+
+#search:focus{
+    border: 0;
+}
+
+.noti:hover, .profile:hover{
+    background: none;
 }
