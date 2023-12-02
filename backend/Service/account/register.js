@@ -5,20 +5,20 @@ const Protect = require('../../Core/Protect');
 async function Create(Request){
     const response = new Response();
 
-    await Protect.Validate(Request,['gender','fullname','age','birthday','id_card','role'])
+    await Protect.Validate(Request,['prefix','fullname','age','birthday','id_card','role'])
     await Protect.ValidateIdCard(Request.id_card);
 
     const roleMasterData = ['artist','organize']
-    const genderMasterData = ['เด็กชาย','เด็กหญิง','นาย','นาง','นางสาว']
+    const prefixMasterData = ['เด็กชาย','เด็กหญิง','นาย','นาง','นางสาว']
 
     if(!roleMasterData.includes(Request.role)) throw new Error('Invalid role')
-    if(!genderMasterData.includes(Request.gender)) throw new Error('Invalid gender')
+    if(!prefixMasterData.includes(Request.prefix)) throw new Error('Invalid prefix')
 
     await Protect.DuplicateCheck(Request.role,'user_id',Request.user.id);
 
     const result = await (new Query).Insert(Request.role,
-        ['user_id', 'gender', 'fullname', 'age', 'birthday', 'id_card'],
-        [Request.user.id,Request.gender,Request.fullname,Request.age,Request.birthday,Request.id_card]
+        ['user_id', 'prefix', 'fullname', 'age', 'birthday', 'id_card'],
+        [Request.user.id,Request.prefix,Request.fullname,Request.age,Request.birthday,Request.id_card]
     );
     response.Result(result);
 
@@ -54,22 +54,25 @@ async function ReadOrganize(Request){
 async function Update(Request){
     const response = new Response();
 
-    await Protect.Validate(Request,['gender','fullname','age','birthday','id_card','role'])
+    await Protect.Validate(Request,['prefix','fullname','age','birthday','id_card','role','band','genre','position'])
     await Protect.ValidateIdCard(Request.id_card);
 
     const roleMasterData = ['artist','organize']
-    const genderMasterData = ['เด็กชาย','เด็กหญิง','นาย','นาง','นางสาว']
+    const prefixMasterData = ['เด็กชาย','เด็กหญิง','นาย','นาง','นางสาว']
 
     if(!roleMasterData.includes(Request.role)) throw new Error('Invalid role')
-    if(!genderMasterData.includes(Request.gender)) throw new Error('Invalid gender')
+    if(!prefixMasterData.includes(Request.prefix)) throw new Error('Invalid prefix')
 
     const updateModel = {
         user_id: Request.user.id,
-        gender : Request.gender,
+        prefix : Request.prefix,
         fullname : Request.fullname,
         age: Request.age,
         birthday: Request.birthday,
         id_card: Request.id_card,
+        band: Request.band,
+        genre: `[${Request.genre}]`,
+        position: `[${Request.position}]`
     }
 
     const result = await (new Query).UpdateColumns(Request.role,updateModel,'user_id',Request.user.id);
