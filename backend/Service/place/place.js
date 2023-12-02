@@ -24,6 +24,7 @@ async function Reserve(Request){
     const response = new Response();
 
     await Protect.Validate(Request,['place_id'])
+    await Protect.ValidateRole(await Permission(Request.user,'Reserve'));
 
     const updateModel = {
         reserve: true,
