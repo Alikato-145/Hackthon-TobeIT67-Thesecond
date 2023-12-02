@@ -164,7 +164,7 @@ async function ValidateObj(data,response){
 async function Validate(request,string_array){
     let stack = []
     for (i=0;i<string_array.length;i++){
-        if(!request[string_array[i]]) stack.push('Missing parameter: '+string_array[i])
+        if(request[string_array[i]]==undefined) stack.push('Missing parameter: '+string_array[i])
     }
     if (stack.length > 0) throw new Error(stack)
     return true
