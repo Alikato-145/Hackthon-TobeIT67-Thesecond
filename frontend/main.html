@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Sonatasphere |</title>
+</head>
+<body style="background: #262952;">
+    <nav>
+        <a href="index.html"><img src="img/LOGO.png" alt="logo" class="logo"></a>
+        <div id="searchBar">
+            <input type="text" name="search" id="search" onfocus="focusSearch()" onblur="focusblur()">
+            <label for="search"><img src="img/search.png" alt=""></label>
+        </div>
+        <div class="groupBtn">
+            <button class="noti"><img src="img/bell.png" alt=""></button>
+            <button class="profile"><img src="img/user.png" alt=""></button>
+        </div>
+    </nav>
+
+    <header>
+        <div class="intro">
+            <div class="col">
+                <div class="intro-text">
+                    <p>
+</p>
+                </div>
+
+                <!-- <a href="Register.html" class="btn introBtn">ลองใช้เลย</a> -->
+            </div>
+
+            <div class="col">
+                <img src="img/LOGO.png" alt="logo" class="intro-logo">
+            </div>
+        </div>
+    </header>
+
+    <main style="background: linear-gradient(180deg, #292C54 19.27%, #C83A3A 53.12%, #292C54 85.94%); height: 3240px;">
+        
+            <div class="container">
+                <div class="filterBar">
+                  <h3>เรียงจาก</h3>
+                  <span id="usernameDisplay"></span>
+            <select id="province" name="province" style="height: 75px; margin: 5px;">
+                <option value="">---เลือกจังหวัด---</option>
+                <option value='กรุงเทพมหานคร'>กรุงเทพมหานคร</option>
+            </select>
+
+            <select id="genre" name="genre" style="height: 75px; margin: 5px;">
+                <option value="">---เลือกแนวเพลง---</option>
+                <option value='เพลงบรรเลง'>เพลงบรรเลง</option>
+                <option value='คลาสสิก'>คลาสสิก</option>
+                <option value='ป๊อป'>ป๊อป</option>
+                <option value='R&D'>R&D</option>
+                <option value='ฮิปฮอป'>ฮิปฮอป</option>
+            </select>
+
+            <select id="province" name="location" style="height: 75px; margin: 5px;">
+                <option value="">---เลือกสถานที่---</option>
+                <option value='ร้านอาหาร'>ร้านอาหาร</option>
+                <option value='ร้านนั่งชิล'>ร้านนั่งชิล</option>
+                <option value='สวนสาธารณะ'>สวนสาธารณะ</option>
+                <option value='งานอิเวนต์'>งานอิเวนต์</option>
+                <option value='ผับ'>ผับ</option>
+            </select>
+
+            <input type="time" name="" id=""  style="height: 57px; margin: 5px; background-color: #505050; color:#fff;">
+        </div>  
+            </div>
+
+            <section id="Musician-mainpage">
+                <div class="box-Musician">
+                    <div class="box-Musician-img">
+                        <img src="https://s.isanook.com/jo/0/ud/476/2381221/pp.jpg" alt="">
+                    </div>
+
+                    <div class="box-Musician-text">
+                        <p>ชื่อ</p>
+                        <p>สถานที่แสดง</p>
+                        <p>วัน</p>
+                        <p>เวลา</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="pradition">
+
+            </div>
+            
+    </main>
+</body>
+
+<script src="js/script.js"></script>
+</html>

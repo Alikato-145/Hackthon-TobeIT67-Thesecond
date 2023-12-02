@@ -18,7 +18,7 @@
         <div class="container">
              <div class="regis-main">
             <h1>สมัครสมาชิก</h1>
-            <form action="https://backend-deploy-theta-sand.vercel.app/api/account/create" method="post" id="register">
+            <form action="" method="post" id="register">
             <div class="inputGroup">
                 <label for="username">username <span style="color:#D54873;">*</span></label>
                 <input type="text" name="username" id="username" placeholder="username" required>
@@ -44,12 +44,14 @@
                 <input type="phone" name="phone" id="phone" placeholder="+66990000000" required>
             </div>
             <br>
-            <button type="submit">สมัครสมาชิก</button>
+            <button type="button" onclick="register()">สมัครสมาชิก</button>
         </form>
         </div>
         </div>
        
         
     </main>
+    
 </body>
+<script src="js/script.js"></script>
 </html>
