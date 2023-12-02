@@ -55,6 +55,8 @@ function login(){
    .then(response => response.json()) // แปลง response เป็น JSON format
    .then(data => {
       if(data.success == true){
+         localStorage.setItem("user", data.username);
+         const cat = localStorage.getItem("user");
          window.location.href = 'main.html';
       }
       console.log(data)
@@ -72,6 +74,30 @@ function register() {
    const password = document.getElementById('password').value;
    const email = document.getElementById('email').value;
    const phone = document.getElementById('phone').value;
+
+   fetch('https://backend-deploy-theta-sand.vercel.app/api/account/create', {
+       method: 'POST',
+       headers: {
+           'Content-Type': 'application/json', // ระบุว่าข้อมูลที่ส่งไปเป็น JSON
+       },
+       body: JSON.stringify({ 
+         username: username,
+         password:password,
+         email:email,
+         phone:phone
+      }) // แปลงข้อมูลเป็น JSON และส่งไปยัง API
+   })
+   .then(response => response.json()) // แปลง response เป็น JSON format
+   .then(data => {
+      console.log(data)
+
+   })
+   .catch(error => {
+       // ทำอย่างอื่นต่อไปที่ต้องการเมื่อเกิด error
+         msg = 'error, Please try again.'
+         document.getElementById('msgRepass').innerHTML = msg
+   });
+
 }
 
 
@@ -117,5 +143,3 @@ function resetPass(){
          document.getElementById('msgRepass').innerHTML = msg
    });
 }
-
-console.log(dataResult)

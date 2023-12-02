@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'prompt', sans-serif;
+    font-family: 'prompt';
     font-size: 18px;
     background: url(../img/background.png), lightgray 50% / cover no-repeat;
     background-size: cover;
