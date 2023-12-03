@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.0.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel="stylesheet" href="formMu.css">
+    <title>Sonatasphere</title>
+</head>
+<body>
+    <section id="head">
+        <div class="header">
+            <div id="logo" class="logo">
+                <img src="photo/Sonatasphere_logo.png">
+            </div>
+            <div id="serch-bar">
+                <input class="serch-type" type="text" placeholder="ชื่อสถานที่, นักดนตรี">
+                <i class="fi fi-br-search"></i>
+            </div>
+            
+        </div>
+    </section>
+    <section>
+        <div class="base-form">
+            <div class="form" style="position: relative; justify-items: center; display: grid; grid-template-rows: 0fr 0fr 0fr; row-gap: 1rem;">
+                <p style="position: relative; font-size: 2rem;">ส่งแบบฟอร์มเรียบร้อย</p>
+                <p style="position: relative;  font-size: 1.5rem;">การโปรโมทถึงมือเจ้าของร้านแล้ว</p>
+                <button style="padding: 0.5rem; padding-left: 3rem; padding-right: 3rem; border-radius: 10px; border: none; outline: none; background-color: #D54873; font-size: 1.5rem;" type="submit" id="ok">OK</button>
+            </div>
+        </div>
+    </section>
+
+    <!------script-------->
+    <script>
+        let sub = document.getElementById('ok');
+
+        sub.addEventListener("click", () => {
+            window.location.href = 'formMus.html';
+    });
+    </script>
+    
+</body>
+</html>

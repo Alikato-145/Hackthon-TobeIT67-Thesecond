@@ -1,0 +1,126 @@
+@font-face {
+    font-family: Roboto;
+    src: url(fonts/Roboto-Regular.ttf);
+}
+
+@font-face {
+    font-family: Noto;
+    src: url(fonts/NotoSerifThai-Regular.ttf);
+}
+
+@font-face {
+    font-family: Inter;
+    src: url(fonts/Inter-Regular.ttf);
+}
+
+@font-face {
+    font-family: Inter Bold;
+    src: url(fonts/Inter-Bold.ttf);
+}
+
+
+/*******************************************************/
+::-webkit-scrollbar{
+    display: none;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100vw; height: 100vh;
+    background-image: url(assets/thetoys.png);
+    background-color: white;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/******************* header ***********************/
+
+
+.header{
+    display: grid;
+    grid-template-columns: 0fr 0fr 0fr;
+    position: relative;
+    width: 100vw; height: 5rem;
+    background-color: #262952;
+    padding: 1rem;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo{
+    display: flex;
+    position: relative;
+    width: 3rem; height: 3rem;
+    background-color: white;
+    object-fit: cover;
+}
+.logo img{
+    width: 100%; position: relative;
+}
+#serch-bar{
+    display: grid;
+    grid-template-columns: 0fr 0fr; grid-template-rows: 0fr;
+    position: relative;
+    width: 40rem; height: 3rem;
+    background-color: #D9D9D9;
+    border-radius: 50px;
+    border: none;
+}
+
+.serch-type{
+    display: flex;
+    position: relative;
+    width: 36rem; height: 3rem;
+    font-size: 1.5rem;
+    font-family: Noto;
+    padding-top: 0.5rem; padding-left: 1.5rem;
+    background-color: #D9D9D9;
+    border-radius: 50px;
+    border: none;
+    outline: none;
+}
+#serch-bar i{
+    display: flex;
+    position: relative;
+    font-size: 2rem;
+    width: 4rem; height: 3rem;
+    align-items: center; justify-content: center;
+}
+
+.bt-back{
+    display: flex;
+    position: relative;
+    width: 10rem; height: 2rem;
+    align-items: center; justify-content: end;
+
+}
+.bt-back h1{
+    color: #FFFFFF;
+    font-family: Noto;
+    font-size: 1.5rem;
+}
+
+/*********************************************************/
+.base-form{
+    display: grid; position: relative;
+    box-sizing: border-box;
+    width: 100vw; height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+.form{
+    display: grid; position: relative;
+    grid-template-rows: 0fr 0fr 0fr 0fr 0fr 0fr;
+    background-color: #D9D9D9;
+    padding-left: 2rem; padding-right: 2rem; padding-top: 2rem; padding-bottom: 2rem;
+    
+    width: 35rem; 
+    font-size: 1.5rem;
+    font-family: Noto;
+    border-radius: 30px;
+}

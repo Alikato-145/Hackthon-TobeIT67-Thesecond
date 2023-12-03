@@ -18,7 +18,7 @@
         <div class="container">
              <div class="regis-main" style="height: 592px;">
             <h1>เข้าสู่ระบบ</h1>
-            <form action="" method="post" id="register">
+            <form id="register">
             <div class="inputGroup">
                 <label for="username">username</label>
                 <input type="text" name="username" id="username" placeholder="username">
@@ -31,13 +31,22 @@
             </div>
             <br>
             
-            <button type="button" onclick="login()">เข้าสู่ระบบ</button>
+            
+            <button type="submit" id="sub">เข้าสู่ระบบ</button>
+            
         </form>
         </div>
         </div>
        
         
     </main>
+    <script>
+        let sub = document.getElementById('sub')
+        sub.addEventListener("click", () => {
+            window.location.href = 'index1.html';
+            alert()
+        });
+
+    </script>
 </body>
-<script src="./js/script.js"></script>
 </html>

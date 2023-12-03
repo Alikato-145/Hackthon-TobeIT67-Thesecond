@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.0.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel="stylesheet" href="formMu.css">
+    <title>Sonatasphere</title>
+</head>
+<body>
+    <section id="head">
+        <div class="header">
+            <div id="logo" class="logo">
+                <img src="photo/Sonatasphere_logo.png">
+            </div>
+            <div id="serch-bar">
+                <input class="serch-type" type="text" placeholder="ชื่อสถานที่, นักดนตรี">
+                <i class="fi fi-br-search"></i>
+            </div>
+            <div id="bt-back" class="bt-back">
+                <h1>ย้อนกลับ</h1>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="base-form">
+            <div class="form">
+                <form>
+                    <div style="display: grid; justify-items: center; position: relative;">
+                        <div style="display: grid; position: relative;">
+                            <div style="display: grid; grid-template-rows: 0fr 0fr; margin-bottom: 1rem;" >
+                                <span>ชื่อวง</span>
+                                <input style="font-size: 1.5rem; padding: 0.5rem; border-radius: 10px; outline: none; border: none;" type="text" placeholder="กรุณาใส่ชื่อร้านของคุณ" required>
+                            </div>
+                            <div style="display: grid; grid-template-rows: 0fr 0fr; margin-bottom: 1rem;" >
+                                <span>ระยะเวลาที่ต้องการแสดง</span>
+                                <input style="font-size: 1.5rem; padding: 0.5rem; border-radius: 10px; outline: none; border: none;" type="text" placeholder="กรุณาใส่ชื่อเวลาของคุณ" required>
+                            </div>
+                            <div style="display: grid; grid-template-rows: 0fr 0fr; margin-bottom: 1rem;" >
+                                <span>แนวเพลง</span>
+                                <input style="font-size: 1.5rem; padding: 0.5rem; border-radius: 10px; outline: none; border: none;"  type="text" placeholder="กรุณาใส่แนวเพลงของคุณ" required>
+                            </div>
+                            <div style="display: grid; grid-template-rows: 0fr 0fr; margin-bottom: 1rem;" >
+                                <span>ผลงาน</span>
+                                <input style="font-size: 1.5rem; padding: 0.5rem; border-radius: 10px; outline: none; border: none;" type="text" placeholder="กรุณาใส่ชื่อผลงาน หรือลิงค์ผลงานของคุณ" required>
+                            </div>
+                            <div style="display: grid; grid-template-rows: 0fr 0fr; margin-bottom: 1rem;" >
+                                <span>ข้อเสนอแนะ/สิ่งที่ต้องการให้ร้านจัดเตรียมไว้ให้</span>
+                                <input style="font-size: 1.5rem; padding: 0.5rem; border-radius: 10px; outline: none; border: none;" type="text" placeholder="กรุณาใส่ความต้องการของคุณ">
+                            </div>
+                            <div style="position: relative; align-items: center;">
+                                <input style="width: 2rem; height: 2rem; position: relative;" type="checkbox">
+                                <span style="font-size: 1.5rem; position: relative; top: -0.5rem; ">ความพร้อมของ Sound Engeneering</span>
+                            </div>
+                        </div>
+                        
+                        <button style="padding-left: 1rem; padding-right: 1rem; padding-top: 0.5rem; padding-bottom: 0.5rem; font-size: 1.5rem; outline: none; border: none; border-radius: 10px; margin-top: 2rem; background-color: #D54873; cursor: pointer; " type="submit" id="yeah">ยืนยันการจ้าง</button>
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        let submit = document.getElementById('yeah');
+
+        submit.addEventListener('click', ()=> {
+            window.location.href = 'promotedMus.html';
+            alert('แน่ใจนะจ่ะ')
+        })
+        let back = document.getElementById('bt-back')
+
+        back.addEventListener("click", ()=>{
+            window.location.href = 'musicn.html';
+        })
+    </script>
+    
+    
+</body>
+</html>
